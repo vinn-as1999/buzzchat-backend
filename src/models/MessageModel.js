@@ -9,6 +9,10 @@ const MsgSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    receiver: {
+        type: String,
+        required: true
+    },
     content: {
         type: String,
         required: true

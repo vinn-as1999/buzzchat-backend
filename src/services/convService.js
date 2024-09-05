@@ -66,6 +66,7 @@ export async function messageRegister(msgData) {
     const {
         conversation_id,
         sender,
+        receiver,
         content,
         day,
         hour
@@ -74,6 +75,7 @@ export async function messageRegister(msgData) {
     return MessageModel.create({
         conversation_id,
         sender,
+        receiver,
         content,
         day,
         hour

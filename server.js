@@ -30,11 +30,9 @@ io.on('connection', (socket) => {
     console.log('New client connected: ', socket.id);
 
     socket.on('newMessage', (message) => {
-        io.emit('message', message)
-    });
+        io.emit('message', message);
 
-    socket.on('receivedMessage', (msg) => {
-        io.emit('receivedMessage', msg)
+        console.log('aqui a msg: ', message)
     });
 
     socket.on('disconnect', () => {
