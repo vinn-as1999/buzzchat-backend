@@ -29,10 +29,17 @@ conn().then(() => {
 io.on('connection', (socket) => {
     console.log('New client connected: ', socket.id);
 
-    socket.on('newMessage', (message) => {
-        io.emit('message', message);
+    socket.on('join', (userId) => {
+        socket.userId = userId
+    });
 
-        console.log('aqui a msg: ', message)
+    socket.on('newMessage', (message) => {
+        const { sender, receiver } = message;
+
+        io.to(sender).emit('message', message);
+        io.to(receiver).emit('message', message);
+
+        console.log(message)
     });
 
     socket.on('disconnect', () => {

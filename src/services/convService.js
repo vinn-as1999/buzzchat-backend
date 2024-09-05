@@ -80,7 +80,6 @@ export async function messageRegister(msgData) {
         day,
         hour
     }).then(data => {
-        console.log('os dados: ', data);
         return data;
         
     }).catch(err => {
