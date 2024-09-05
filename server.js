@@ -33,6 +33,10 @@ io.on('connection', (socket) => {
         io.emit('message', message)
     });
 
+    socket.on('receivedMessage', (msg) => {
+        io.emit('receivedMessage', msg)
+    });
+
     socket.on('disconnect', () => {
         console.log('Client disconnected: ', socket.id)
     });
