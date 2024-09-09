@@ -37,8 +37,6 @@ io.on('connection', (socket) => {
     socket.on('newMessage', (message) => {
 
         io.emit('message', message)
-
-        console.log(message)
     });
 
     socket.on('disconnect', () => {
