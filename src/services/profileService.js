@@ -16,7 +16,7 @@ export default async function imageUploader(obj) {
 
 export async function getProfileData(param) {
     const profileInfo = await UserModel.findOne({
-        $or: [{_id: param}, {username: param}]
+        username: param
     });
 
     if (profileInfo) {

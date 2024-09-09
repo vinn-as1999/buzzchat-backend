@@ -31,13 +31,12 @@ io.on('connection', (socket) => {
 
     socket.on('join', (userId) => {
         socket.userId = userId
+        console.log(`user ${userId} conected to ${socket.id}`)
     });
 
     socket.on('newMessage', (message) => {
-        const { sender, receiver } = message;
 
-        io.to(sender).emit('message', message);
-        io.to(receiver).emit('message', message);
+        io.emit('message', message)
 
         console.log(message)
     });
