@@ -30,12 +30,18 @@ io.on('connection', (socket) => {
     console.log('New client connected: ', socket.id);
 
     socket.on('join', (userId) => {
-        socket.userId = userId
-        console.log(`user ${userId} conected to ${socket.id}`)
+        if (userId) {
+            socket.userId = userId;
+            socket.join(userId);
+            console.log(`user ${userId} conected to ${socket.id}`);
+        } else {
+            console.log('No userId found in localstorage')
+        }
     });
 
     socket.on('newMessage', (message) => {
         const {sender, receiver} = message;
+        console.log(sender, receiver)
         io.emit('message', message)
         io.to(receiver).emit('notification', message)
     });
