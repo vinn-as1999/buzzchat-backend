@@ -9,9 +9,9 @@ async function conn() {
             process.env.DATABASE_URI
         )
         
-        console.log('Conectado!');
+        console.log('Connected!');
     } catch (err) {
-        console.log('erro ao conectar: ', err)
+        console.log('Error connecting to database: ', err)
     }
 };
 

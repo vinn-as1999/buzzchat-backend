@@ -53,6 +53,6 @@ app.use(routes);
 
 app.on('ready', () => {
     httpServer.listen(process.env.PORT || '3333', () => {
-        console.log('server rodando na porta 3333: http://localhost:3333');
+        console.log('Server running on port 3333: http://localhost:3333');
     });
 });
