@@ -34,6 +34,7 @@ io.on('connection', (socket) => {
             socket.userId = userId;
             socket.join(userId);
             console.log(`user ${userId} conected to ${socket.id}`);
+            io.emit('online', 'Online')
         } else {
             console.log('No userId found in localstorage')
         }
@@ -48,6 +49,7 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         console.log('Client disconnected: ', socket.id)
+        io.emit('offline', 'Offline')
     });
 });
 
