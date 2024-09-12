@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-
 const blockedSchema = mongoose.Schema({
     user: {
         type: String,
