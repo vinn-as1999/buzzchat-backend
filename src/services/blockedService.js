@@ -7,8 +7,8 @@ async function blockUser(params) {
         {$addToSet: { blocked_contacts: blocked_contacts }},
         {new: true, upsert: true}
     );
-
-    return blocked_contacts;
+    console.log(blocked.blocked_contacts);
+    return blocked.blocked_contacts;
 };
 
 export default blockUser;
