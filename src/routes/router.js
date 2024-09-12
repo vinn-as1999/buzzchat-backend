@@ -1,5 +1,6 @@
 import * as AuthController from '../controllers/authController.js'
 import * as ChatController from '../controllers/chatController.js'
+import blockUserController from '../controllers/blockedController.js'
 import tokenMiddleware from '../middlewares/tokenMiddleware.js'
 import uploadImg, {setProfileController, getProfileInfo} from '../controllers/profileController.js'
 import upload from '../config/multer.js'
@@ -34,5 +35,7 @@ router.post('/api/uploadPicture', upload.single("file"), uploadImg);
 router.post('/api/setProfile', setProfileController);
 
 router.get('/api/getProfile', getProfileInfo);
+
+router.post('/api/blockUser', blockUserController)
 
 export default router;
