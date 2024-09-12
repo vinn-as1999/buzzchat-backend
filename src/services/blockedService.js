@@ -1,4 +1,4 @@
-import BlockedUsers from "../models/BlockedUsers";
+import BlockedUsers from "../models/BlockedUsers.js";
 
 async function blockUser(params) {
     const { user, blocked_contacts } = params;

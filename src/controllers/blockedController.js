@@ -1,5 +1,5 @@
-import BlockedUsers from "../models/BlockedUsers";
-import * as BlockedServices from "../services/blockedService"
+import BlockedUsers from "../models/BlockedUsers.js";
+import * as BlockedServices from "../services/blockedService.js"
 
 async function blockUserController(req, res) {
     
