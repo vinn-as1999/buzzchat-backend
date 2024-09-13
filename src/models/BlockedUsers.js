@@ -5,7 +5,7 @@ const blockedSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    blocked_contacts: {
+    blocked_contact: {
         type: [String],
         default: []
     }
