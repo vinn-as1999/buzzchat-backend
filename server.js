@@ -41,10 +41,8 @@ io.on('connection', (socket) => {
     });
 
     socket.on('newMessage', (message) => {
-        const {sender, receiver} = message;
-        console.log(sender, receiver)
         io.emit('message', message)
-        io.to(receiver).emit('notification', message)
+        io.emit('notification', message)
     });
 
     socket.on('disconnect', () => {

@@ -1,9 +1,10 @@
 import BlockedUsers from "../models/BlockedUsers.js";
 
+
 async function blockUser(params) {
     try {
         const { user, blocked_contact } = params;
-        const blocked = await BlockedUsers.findAndUpdate(
+        const blocked = await BlockedUsers.findOneAndUpdate(
             { user },
             {$addToSet: { blocked_contact: blocked_contact }},
             {new: true, upsert: true}
@@ -20,5 +21,6 @@ async function blockUser(params) {
         console.log('Erro no serviço blockedService: ', error)
     }
 };
+
 
 export default blockUser;

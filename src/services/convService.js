@@ -44,14 +44,12 @@ export async function checkChat(ids) {
     })
     .then(data => {
         if (data) {
-            console.log('aqui o data do checkchat', data);
             return data._id;
         } else {
-            console.log('chat não encontrado');
+            console.log('Chat not found');
             return null;
         }
-
-    }).catch(err => console.log('erro no catch de checkChat: ', err)) 
+    }).catch(err => console.log('error: ', err)) 
 };
 
 export async function getId(friendName) {
