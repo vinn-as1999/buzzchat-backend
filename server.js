@@ -29,19 +29,13 @@ conn().then(() => {
 io.on('connection', (socket) => {
     console.log('New client connected: ', socket.id);
 
-    socket.on('join', (userId) => {
-        if (userId) {
-            socket.userId = userId;
-            socket.join(userId);
-            console.log(`user ${userId} conected to ${socket.id}`);
-            io.emit('online', 'Online')
-        } else {
-            console.log('No userId found in localstorage')
-        }
-    });
-
     socket.on('newMessage', (message) => {
-        io.emit('message', message)
+        const { sender, receiver } = message;
+        
+        const room = [ sender, receiver ].sort().join('-');
+        socket.join(room);
+
+        io.to(room).emit('message', message)
         io.emit('notification', message)
     });
 
