@@ -26,8 +26,17 @@ conn().then(() => {
     app.emit('ready');
 });
 
+const users = {};
+
 io.on('connection', (socket) => {
-    console.log('New client connected: ', socket.id);
+
+    socket.on('online', (userId) => {
+        users[userId] = socket.id;
+        io.emit('Online', {
+            id: userId,
+            status: 'Online'
+        })
+    });
 
     socket.on('newMessage', (message) => {
         const { sender, receiver } = message;
@@ -35,13 +44,18 @@ io.on('connection', (socket) => {
         const room = [ sender, receiver ].sort().join('-');
         socket.join(room);
 
+        console.log('array', Array.from(sender))
+
         io.to(room).emit('message', message)
-        io.emit('notification', message)
+        io.to(room).emit('notification', {
+            title: 'New message',
+            content: message.content
+        })
     });
 
     socket.on('disconnect', () => {
         console.log('Client disconnected: ', socket.id)
-        io.emit('offline', 'Offline')
+        io.emit('Offline', 'Offline')
     });
 });
 
