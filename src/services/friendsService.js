@@ -3,15 +3,15 @@ import FriendsModel from "../models/FriendsModel.js";
 
 export async function addFriend(body) {
     if (body) {
-        const {userId, friendId} = body;
-        if (!userId || !friendId) {
+        const {user, friendId} = body;
+        if (!user || !friendId) {
             return {
                 error: 'User ID and Friend ID are required'
             }
         }
-        
+
         const newFriends = await FriendsModel.findOneAndUpdate(
-            {user: userId},
+            {user: user},
             {$addToSet: {friend_list: friendId}},
             {new: true, upsert: true}
         );
