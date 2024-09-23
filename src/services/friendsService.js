@@ -3,8 +3,8 @@ import FriendsModel from "../models/FriendsModel.js";
 
 export async function addFriend(body) {
     if (body) {
-        const {user, friendId} = body;
-        if (!user || !friendId) {
+        const {user, userId, friendId} = body;
+        if (!user || !userId || !friendId) {
             return {
                 error: 'User ID and Friend ID are required'
             }

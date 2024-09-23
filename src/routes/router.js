@@ -7,6 +7,7 @@ import * as FriendController from '../controllers/friendsController.js'
 import upload from '../config/multer.js'
 import express from 'express'
 
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -40,5 +41,6 @@ router.get('/api/getProfile', getProfileInfo);
 router.post('/api/blockUser', BlockedController.blockUserController);
 
 router.post('/api/addFriend', FriendController.addFriendController);
+
 
 export default router;
