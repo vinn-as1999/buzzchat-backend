@@ -1,7 +1,7 @@
 import blockUser from "../services/blockedService.js";
 
 
-async function blockUserController(req, res) {
+export async function blockUserController(req, res) {
     try {
         const blocked = await blockUser(req.body);
         if (blocked) {
@@ -15,6 +15,3 @@ async function blockUserController(req, res) {
         });
     }
 };
-
-
-export default blockUserController;

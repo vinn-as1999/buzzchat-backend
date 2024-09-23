@@ -1,8 +1,9 @@
 import * as AuthController from '../controllers/authController.js'
 import * as ChatController from '../controllers/chatController.js'
-import blockUserController from '../controllers/blockedController.js'
+import * as BlockedController from '../controllers/blockedController.js'
 import tokenMiddleware from '../middlewares/tokenMiddleware.js'
 import uploadImg, {setProfileController, getProfileInfo} from '../controllers/profileController.js'
+import * as FriendController from '../controllers/friendsController.js'
 import upload from '../config/multer.js'
 import express from 'express'
 
@@ -36,6 +37,8 @@ router.post('/api/setProfile', setProfileController);
 
 router.get('/api/getProfile', getProfileInfo);
 
-router.post('/api/blockUser', blockUserController)
+router.post('/api/blockUser', BlockedController.blockUserController);
+
+router.post('/api/addFriend', FriendController.addFriendController);
 
 export default router;
