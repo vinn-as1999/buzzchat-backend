@@ -27,10 +27,10 @@ conn().then(() => {
 });
 
 const users = {};
-
 io.on('connection', (socket) => {
 
     socket.on('online', (userId) => {
+        console.log('users', users)
         users[userId] = socket.id;
         io.emit('Online', {
             id: userId,
@@ -44,7 +44,13 @@ io.on('connection', (socket) => {
         const room = [ sender, receiver ].sort().join('-');
         socket.join(room);
 
-        console.log('array', Array.from(sender))
+        const receiverSocket = users[receiver];
+        console.log(users, 'aqui')
+
+        if (receiverSocket) {
+            io.sockets.sockets.get(receiverSocket).join(room);
+            console.log(io.sockets.adapter.rooms.get(room))
+        };
 
         io.to(room).emit('message', message)
         io.to(room).emit('notification', {
