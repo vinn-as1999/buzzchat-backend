@@ -58,7 +58,8 @@ export async function login(loginData) {
         console.log('Login efetuado');
         return { 
             token: token,
-            id: user._id
+            id: user._id,
+            username: user.username
         }
     } else {
         console.log('Email ou senha inválidos')
