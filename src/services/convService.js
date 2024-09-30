@@ -7,7 +7,6 @@ export async function searchChats(chatsData) {
     return UserModel.find({})
         .then(users => users)
         .catch(err => console.log(err))
-
 };
 
 export async function chatRegister(chatData) {

@@ -24,3 +24,10 @@ export async function addFriend(body) {
         }
     }
 };
+
+export async function getFriends(name) {
+    const friends = await FriendsModel.findOne({user: name});
+    console.log('o nome', name)
+    console.log('dados dos amigos', friends)
+    return friends.friend_list;
+}
