@@ -42,7 +42,9 @@ router.post('/api/blockUser', BlockedController.blockUserController);
 
 router.post('/api/addFriend', FriendController.addFriendController);
 
-router.get('/api/getFriends', FriendController.getFriendsController)
+router.get('/api/getFriends', FriendController.getFriendsController);
+
+router.get('/api/getBlocked', BlockedController.getBlockedUsers)
 
 
 export default router;

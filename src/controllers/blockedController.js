@@ -1,4 +1,5 @@
 import blockUser from "../services/blockedService.js";
+import { getBlocked } from "../services/blockedService.js";
 
 
 export async function blockUserController(req, res) {
@@ -18,7 +19,14 @@ export async function blockUserController(req, res) {
 
 export async function getBlockedUsers(req, res) {
   try {
-    const blockedUsers = await getBlockedUsers(req.query.name)
+    const blockedUsers = await getBlocked(req.query.name);
+    if (!blockedUsers) {
+      return {
+        message: 'No blocked contacts'
+      }
+    } 
+    return res.status(200).json({blockedUsers})
+    
   } catch (error) {
     console.log('Error getting blocked users')
   }  

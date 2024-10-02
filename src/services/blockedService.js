@@ -22,5 +22,16 @@ async function blockUser(params) {
     }
 };
 
+export async function getBlocked(name) {
+    const blocked = await BlockedUsers.find({user: name});
+    console.log('os block', blocked)
+    if (!blocked) {
+        console.log('erro no if de getblocked')
+        return {
+            message: 'No blocked'
+        }
+    }
+}
+
 
 export default blockUser;
