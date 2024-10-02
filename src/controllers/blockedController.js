@@ -21,12 +21,12 @@ export async function getBlockedUsers(req, res) {
   try {
     const blockedUsers = await getBlocked(req.query.name);
     if (!blockedUsers) {
-      return {
+      return res.status(404).json({
         message: 'No blocked contacts'
-      }
+      })
     } 
     return res.status(200).json({blockedUsers})
-    
+
   } catch (error) {
     console.log('Error getting blocked users')
   }  
