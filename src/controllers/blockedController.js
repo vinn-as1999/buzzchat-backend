@@ -15,3 +15,11 @@ export async function blockUserController(req, res) {
         });
     }
 };
+
+export async function getBlockedUsers(req, res) {
+  try {
+    const blockedUsers = await getBlockedUsers(req.query.name)
+  } catch (error) {
+    console.log('Error getting blocked users')
+  }  
+};
