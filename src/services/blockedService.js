@@ -23,11 +23,13 @@ async function blockUser(params) {
 };
 
 export async function getBlocked(name) {
-    const blocked = await BlockedUsers.find({user: name});
+    const blocked = await BlockedUsers.findOne({user: name});
     console.log('os block', blocked)
     if (!blocked) {
         return null;
     }
+
+    return blocked.blocked_contact;
 }
 
 
