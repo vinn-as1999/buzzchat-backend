@@ -45,7 +45,6 @@ io.on('connection', (socket) => {
         socket.join(room);
 
         const receiverSocket = users[receiver];
-        console.log(users, 'aqui')
 
         if (receiverSocket) {
             io.sockets.sockets.get(receiverSocket).join(room);
